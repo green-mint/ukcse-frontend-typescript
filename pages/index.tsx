@@ -2,8 +2,16 @@ import type { NextPage } from 'next'
 import Head from 'next/head'
 import Image from 'next/image'
 import styles from '../styles/Home.module.css'
+import { useQuery, useMutation } from "@apollo/client"
+import { GetPosts } from "../lib/graphql/interfaces/GetPosts"
+import { GET_POSTS } from "../lib/graphql/queries"
+import { SIGNIN } from '../lib/graphql/mutations'
+import { Signin, SigninVariables } from '../lib/graphql/interfaces/Signin'
+import { useEffect } from 'react'
 
 const Home: NextPage = () => {
+
+
   return (
     <div className={styles.container}>
       <Head>
