@@ -1,3 +1,14 @@
 {
-  "extends": "next/core-web-vitals"
+  "extends": [
+    "plugin:storybook/recommended",
+    "next/core-web-vitals"
+  ],
+  "overrides": [
+    {
+      "files": ["*.stories.@(js|jsx|ts|tsx|mdx)"],
+      "rules": {
+        "storybook/hierarchy-separator": "error"
+      }
+    }
+  ]
 }
