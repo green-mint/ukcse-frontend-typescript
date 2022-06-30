@@ -45,7 +45,7 @@ const sliderProps: Settings = {
 
 const PostsSlider = (props: Props) => {
   return (
-    <div className='xl:max-w-5xl xl:mx-auto'>
+    <div className='px-6 xl:max-w-5xl xl:mx-auto'>
       <Slider {...sliderProps} >
         {props.data.map((post, index) => (
           <div className='px-3' key={index}>

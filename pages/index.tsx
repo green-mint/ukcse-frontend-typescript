@@ -1,8 +1,9 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
 import PostCard, { PostCardProps } from '../components/posts/PostCard/PostCard'
+import PostEditor from '../components/posts/PostEditor/PostEditor'
 import PostsGrid from '../components/posts/PostsGrid/PostsGrid'
-import PostsSlider from '../components/posts/PostsSlider.tsx/PostsSlider'
+import PostsSlider from '../components/posts/PostsSlider/PostsSlider'
 
 const posts: PostCardProps[] = [
   {
@@ -149,8 +150,8 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <div className='px-5'>
-        <PostsSlider data={posts} />
+      <div className='p-3 mx-auto'>
+        <PostEditor />
       </div>
     </div>
   )

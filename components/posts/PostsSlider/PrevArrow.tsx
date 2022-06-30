@@ -12,7 +12,7 @@ const PrevArrow = ({
   style,
 }: CustomArrowProps) => {
   return (
-    <div className="absolute top-1/3 -left-8 cursor-pointer" onClick={onClick}>
+    <div className="absolute top-1/3 -left-5 lg:-left-8 cursor-pointer" onClick={onClick}>
       <MdOutlineNavigateBefore size={35} className="font-bold" />
     </div>
   );
