@@ -8,11 +8,12 @@ type Props = {
   value: string;
   onChange: (...event: any[]) => void;
   onBlur: (...event: any[]) => void;
+  className?: string;
 };
 
-const DropdownInput = ({ label, options, value, onChange, onBlur }: Props) => {
+const DropdownInput = ({ label, options, value, className, onChange, onBlur }: Props) => {
   return (
-    <div className="">
+    <div className={className}>
       <Listbox as="div" value={value} onChange={onChange} onBlur={onBlur}>
         <Listbox.Label className="block font-semibold">{label}:</Listbox.Label>
         <Listbox.Button className="relative bg-slate-200 w-full text-left px-2 py-1 rounded-md">

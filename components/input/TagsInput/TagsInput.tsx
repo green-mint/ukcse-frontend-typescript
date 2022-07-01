@@ -12,10 +12,11 @@ type Props = {
 };
 
 const TagsInput = ({ label, value, onChange, onBlur }: Props) => {
+
   return (
     <div onBlur={onBlur}>
       <label className="block font-semibold">{label}:</label>
-      <AddTagInput onAdd={(newTag) => onChange([...value, newTag])} />
+      <AddTagInput totalTags={value.length} onAdd={(newTag) => onChange([...value, newTag])} />
       <div className="flex flex-wrap">
         {value.map((tag, index) => (
           <Tag
