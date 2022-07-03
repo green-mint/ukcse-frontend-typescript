@@ -1,145 +1,165 @@
-import type { NextPage } from 'next'
-import Head from 'next/head'
-import PostCard, { PostCardProps } from '../components/posts/PostCard/PostCard'
-import PostEditor from '../components/posts/PostEditor/PostEditor'
-import PostsGrid from '../components/posts/PostsGrid/PostsGrid'
-import PostsSlider from '../components/posts/PostsSlider/PostsSlider'
+import type { NextPage } from "next";
+import Head from "next/head";
+import PostCard, { PostCardProps } from "../components/post/PostCard/PostCard";
+import PostEditor from "../components/post/PostEditor/PostEditor";
+// import PostsGrid from '../components/ui/Grid/PostsGrid/PostsGrid'
+import PostsSlider from "../components/post/PostsSlider/PostsSlider";
+import ProductCard from "../components/product/ProductCard/ProductCard";
 
 const posts: PostCardProps[] = [
   {
-    title: "Architectural Engineering Wonders of the modern era for your Inspiration",
+    title:
+      "Architectural Engineering Wonders of the modern era for your Inspiration",
     category: "personal growth",
     date: "2020-01-01",
     author: "Saad ur Rehman",
     image: "/avatar.png",
   },
   {
-    title: "Architectural Engineering Wonders of the modern era for your Inspiration",
+    title:
+      "Architectural Engineering Wonders of the modern era for your Inspiration",
     category: "personal growth",
     date: "2020-01-01",
     author: "Saad ur Rehman",
     image: "/avatar.png",
   },
   {
-    title: "Architectural Engineering Wonders of the modern era for your Inspiration",
+    title:
+      "Architectural Engineering Wonders of the modern era for your Inspiration",
     category: "personal growth",
     date: "2020-01-01",
     author: "Saad ur Rehman",
     image: "/avatar.png",
   },
   {
-    title: "Architectural Engineering Wonders of the modern era for your Inspiration",
+    title:
+      "Architectural Engineering Wonders of the modern era for your Inspiration",
     category: "personal growth",
     date: "2020-01-01",
     author: "Saad ur Rehman",
     image: "/avatar.png",
   },
   {
-    title: "Architectural Engineering Wonders of the modern era for your Inspiration",
+    title:
+      "Architectural Engineering Wonders of the modern era for your Inspiration",
     category: "personal growth",
     date: "2020-01-01",
     author: "Saad ur Rehman",
     image: "/avatar.png",
   },
   {
-    title: "Architectural Engineering Wonders of the modern era for your Inspiration",
+    title:
+      "Architectural Engineering Wonders of the modern era for your Inspiration",
     category: "personal growth",
     date: "2020-01-01",
     author: "Saad ur Rehman",
     image: "/avatar.png",
   },
   {
-    title: "Architectural Engineering Wonders of the modern era for your Inspiration",
+    title:
+      "Architectural Engineering Wonders of the modern era for your Inspiration",
     category: "personal growth",
     date: "2020-01-01",
     author: "Saad ur Rehman",
     image: "/avatar.png",
   },
   {
-    title: "Architectural Engineering Wonders of the modern era for your Inspiration",
+    title:
+      "Architectural Engineering Wonders of the modern era for your Inspiration",
     category: "personal growth",
     date: "2020-01-01",
     author: "Saad ur Rehman",
     image: "/avatar.png",
   },
   {
-    title: "Architectural Engineering Wonders of the modern era for your Inspiration",
+    title:
+      "Architectural Engineering Wonders of the modern era for your Inspiration",
     category: "personal growth",
     date: "2020-01-01",
     author: "Saad ur Rehman",
     image: "/avatar.png",
   },
   {
-    title: "Architectural Engineering Wonders of the modern era for your Inspiration",
+    title:
+      "Architectural Engineering Wonders of the modern era for your Inspiration",
     category: "personal growth",
     date: "2020-01-01",
     author: "Saad ur Rehman",
     image: "/avatar.png",
   },
   {
-    title: "Architectural Engineering Wonders of the modern era for your Inspiration",
+    title:
+      "Architectural Engineering Wonders of the modern era for your Inspiration",
     category: "personal growth",
     date: "2020-01-01",
     author: "Saad ur Rehman",
     image: "/avatar.png",
   },
   {
-    title: "Architectural Engineering Wonders of the modern era for your Inspiration",
+    title:
+      "Architectural Engineering Wonders of the modern era for your Inspiration",
     category: "personal growth",
     date: "2020-01-01",
     author: "Saad ur Rehman",
     image: "/avatar.png",
   },
   {
-    title: "Architectural Engineering Wonders of the modern era for your Inspiration",
+    title:
+      "Architectural Engineering Wonders of the modern era for your Inspiration",
     category: "personal growth",
     date: "2020-01-01",
     author: "Saad ur Rehman",
     image: "/avatar.png",
   },
   {
-    title: "Architectural Engineering Wonders of the modern era for your Inspiration",
+    title:
+      "Architectural Engineering Wonders of the modern era for your Inspiration",
     category: "personal growth",
     date: "2020-01-01",
     author: "Saad ur Rehman",
     image: "/avatar.png",
   },
   {
-    title: "Architectural Engineering Wonders of the modern era for your Inspiration",
+    title:
+      "Architectural Engineering Wonders of the modern era for your Inspiration",
     category: "personal growth",
     date: "2020-01-01",
     author: "Saad ur Rehman",
     image: "/avatar.png",
   },
   {
-    title: "Architectural Engineering Wonders of the modern era for your Inspiration",
+    title:
+      "Architectural Engineering Wonders of the modern era for your Inspiration",
     category: "personal growth",
     date: "2020-01-01",
     author: "Saad ur Rehman",
     image: "/avatar.png",
   },
   {
-    title: "Architectural Engineering Wonders of the modern era for your Inspiration",
+    title:
+      "Architectural Engineering Wonders of the modern era for your Inspiration",
     category: "personal growth",
     date: "2020-01-01",
     author: "Saad ur Rehman",
     image: "/avatar.png",
   },
   {
-    title: "Architectural Engineering Wonders of the modern era for your Inspiration",
+    title:
+      "Architectural Engineering Wonders of the modern era for your Inspiration",
     category: "personal growth",
     date: "2020-01-01",
     author: "Saad ur Rehman",
     image: "/avatar.png",
   },
   {
-    title: "Architectural Engineering Wonders of the modern era for your Inspiration",
+    title:
+      "Architectural Engineering Wonders of the modern era for your Inspiration",
     category: "personal growth",
     date: "2020-01-01",
     author: "Saad ur Rehman",
     image: "/avatar.png",
   },
-]
+];
 
 const Home: NextPage = () => {
   return (
@@ -151,11 +171,16 @@ const Home: NextPage = () => {
         <link rel="stylesheet" href="/quill-editor.css" />
       </Head>
 
-      <div className='p-3 mx-auto'>
-        {/* <PostEditor /> */}
+      <div className="p-3 mx-auto">
+        <ProductCard
+          title="My Life"
+          thumbnail="/avatar.png"
+          href="/"
+          price={100}
+        />
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Home
+export default Home;
