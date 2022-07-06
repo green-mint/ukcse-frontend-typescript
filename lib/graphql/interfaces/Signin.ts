@@ -11,6 +11,7 @@ import { SignInInput, Membership, Role } from "./globalTypes";
 
 export interface Signin_signIn_user {
   __typename: "User";
+  name: string;
   email: string;
   id: string;
   membership: Membership;
@@ -18,7 +19,7 @@ export interface Signin_signIn_user {
 }
 
 export interface Signin_signIn {
-  __typename: "SignedInUser";
+  __typename?: "SignedInUser";
   token: string;
   user: Signin_signIn_user;
 }

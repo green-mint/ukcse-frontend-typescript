@@ -14,6 +14,7 @@ export const SIGNIN = gql`
     signIn(input: $input) {
       token
       user {
+        name
         email
         id
         membership

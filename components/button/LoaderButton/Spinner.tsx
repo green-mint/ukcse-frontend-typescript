@@ -15,7 +15,7 @@ const Spinner = (props: LoaderProps) => {
         cy="12"
         r="10"
         stroke="currentColor"
-        stroke-width="4"></circle>
+        strokeWidth="4"></circle>
       <path
         className="opacity-75"
         fill="currentColor"
