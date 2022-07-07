@@ -1,6 +1,7 @@
 import { useQuery } from "@apollo/client";
 import { GetPosts, GetPostsVariables } from "../../../lib/graphql/interfaces/GetPosts";
 import { GET_POSTS } from "../../../lib/graphql/operations";
+import PostLoader from "../../loaders/PostLoader/PostLoader";
 import { Grid } from "../../ui";
 import PostCard from "../PostCard/PostCard";
 
@@ -20,6 +21,7 @@ const PostsGrid = () => {
         <Grid
           isLoading={loading}
           items={data?.posts}
+          loader={<PostLoader />}
           renderItem={(post, index) => {
             return (
               post && (

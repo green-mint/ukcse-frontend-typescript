@@ -1,5 +1,5 @@
 import React from "react";
-import LoadingSpinner from "../../loaders/LoadingSpinner/LoadingSpinner";
+import { LoadingSpinner } from "../../loaders";
 
 type Props = React.ButtonHTMLAttributes<HTMLButtonElement> & {
   label: string;

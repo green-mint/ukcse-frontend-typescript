@@ -1,6 +1,7 @@
 import { useQuery } from "@apollo/client";
 import React from "react";
 import { MainLayout } from "../../components/layouts";
+import { ProductLoader } from "../../components/loaders";
 import { ProductCard } from "../../components/product";
 import { Grid } from "../../components/ui";
 import useAuth from "../../lib/auth/useAuth";
@@ -27,6 +28,7 @@ const Products = (props: Props) => {
       <div>
         <Grid
           isLoading={loading}
+          loader={<ProductLoader />}
           items={data?.products}
           renderItem={(product, index) => (
             <div key={product?.id}>

@@ -9,7 +9,7 @@ export type PostCardProps = {
   category: string;
   date: string;
   image: string;
-  author: string;
+  author: string; 
   // size?: "xs" | "sm" | "md" | "lg" | "xl";
 }
 

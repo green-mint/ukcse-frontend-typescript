@@ -1,10 +1,10 @@
 import React, { useCallback, useRef } from "react";
-import LoadingSpinner from "../../loaders/LoadingSpinner/LoadingSpinner";
 
 type Props<T> = {
   renderItem: (item: T, index: number) => React.ReactElement | null;
   items: T[] | undefined;
   isLoading?: boolean;
+  loader?: React.ReactElement;
   onEndReached?: () => void;
 };
 
@@ -12,9 +12,9 @@ const Grid = <T,>({
   renderItem,
   items,
   isLoading,
+  loader,
   onEndReached = () => null,
 }: Props<T>) => {
-
   // const observer = useRef<HTMLDivElement | null>(null);
 
   // const lastBookElementRef = useCallback(
@@ -40,15 +40,13 @@ const Grid = <T,>({
           <div
             key={index}
             // ref={index === items.length - 1 ? lastBookElementRef : null}
-            >
+          >
             {renderItem(item, index)}
           </div>
         ))}
-      {isLoading && (
-        <div>
-          <LoadingSpinner />
-        </div>
-      )}
+      {isLoading &&
+        [...Array(4)].map(() => loader)
+      } 
     </div>
   );
 };
