@@ -49,6 +49,7 @@ export const GET_POST = gql`
       title
       content
       tags
+      image
       publishedAt
       category
       author {
@@ -99,11 +100,10 @@ export const UPDATE_POST = gql`
 `;
 
 export const GET_POSTS = gql`
-  query GetPosts {
-    posts {
+  query GetPosts($filter: PostFilter) {
+    posts(filter: $filter) {
       id
       title
-      content
       author {
         name
       }

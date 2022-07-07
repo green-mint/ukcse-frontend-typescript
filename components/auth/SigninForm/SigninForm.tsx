@@ -1,8 +1,8 @@
 import React from "react";
 import { useForm } from "react-hook-form";
-import LoaderButton from "../../button/LoaderButton/LoaderButton";
-import GenericInput from "../../input/GenericInput/GenericInput";
 import { validateEmail, validateName, validatePassword } from "../../../helpers/form-validators"
+import { LoaderButton } from "../../buttons";
+import { GenericInput } from "../../inputs";
 
 export type SignInFormInputs = {
   email: string;

@@ -7,6 +7,8 @@
 // GraphQL query operation: GetPosts
 // ====================================================
 
+import { PostFilter } from "./globalTypes";
+
 export interface GetPosts_posts_author {
   __typename: "User";
   name: string;
@@ -16,7 +18,6 @@ export interface GetPosts_posts {
   __typename: "Post";
   id: string;
   title: string;
-  content: string;
   author: GetPosts_posts_author;
   publishedAt: string;
   category: string;
@@ -25,4 +26,8 @@ export interface GetPosts_posts {
 
 export interface GetPosts {
   posts: (GetPosts_posts | null)[];
+}
+
+export interface GetPostsVariables {
+  filter?: PostFilter | null;
 }

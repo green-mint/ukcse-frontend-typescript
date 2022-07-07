@@ -1,6 +1,5 @@
 import { values } from "cypress/types/lodash";
 import React from "react";
-import SimpleButton from "../../button/SimpleButton/SimpleButton";
 import AddTagInput from "./AddTagInput";
 import Tag from "./Tag";
 

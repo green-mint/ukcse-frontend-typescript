@@ -4,7 +4,7 @@ import { toast } from "react-toastify";
 import SignupForm, {
   SignUpFormInputs,
 } from "../../components/auth/SignupForm/SignupForm";
-import MainLayout from "../../components/layouts/MainLayout/MainLayout";
+import { MainLayout } from "../../components/layouts";
 import RequireNoAuth from "../../lib/auth/guards/RequireNoAuth";
 import { SignupVariables, Signup } from "../../lib/graphql/interfaces/Signup";
 import { SIGNUP } from "../../lib/graphql/operations";

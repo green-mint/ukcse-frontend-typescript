@@ -2,7 +2,7 @@ import React from "react";
 
 type LoaderProps = {};
 
-const Spinner = (props: LoaderProps) => {
+const LoadingSpinner = (props: LoaderProps) => {
   return (
     <svg
       className="animate-spin h-8 w-8 text-white"
@@ -24,4 +24,4 @@ const Spinner = (props: LoaderProps) => {
   );
 };
 
-export default Spinner;
+export default LoadingSpinner;

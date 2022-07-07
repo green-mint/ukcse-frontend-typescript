@@ -5,7 +5,7 @@ import { toast } from "react-toastify";
 import SigninForm, {
   SignInFormInputs,
 } from "../../components/auth/SigninForm/SigninForm";
-import MainLayout from "../../components/layouts/MainLayout/MainLayout";
+import { MainLayout } from "../../components/layouts";
 import RequireNoAuth from "../../lib/auth/guards/RequireNoAuth";
 import useAuth from "../../lib/auth/useAuth";
 import { Signin, SigninVariables } from "../../lib/graphql/interfaces/Signin";

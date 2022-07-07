@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import SimpleButton from "../../button/SimpleButton/SimpleButton";
+import { SimpleButton } from "../../buttons";
 
 type Props = {
   onAdd: (...event: any[]) => void;

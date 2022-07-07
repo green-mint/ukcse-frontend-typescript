@@ -1,8 +1,8 @@
-import { ApolloClient, ApolloLink, from, InMemoryCache } from "@apollo/client"
-import { createUploadLink } from "apollo-upload-client"
+import { ApolloClient, ApolloLink, from, InMemoryCache } from "@apollo/client";
+import { createUploadLink } from "apollo-upload-client";
 import { onError } from "@apollo/client/link/error";
+import { offsetLimitPagination } from "@apollo/client/utilities";
 
- 
 const authLink = new ApolloLink((operation, forward) => {
   // retrive the token from local storage if local storage is available
   let token;
@@ -30,12 +30,21 @@ const errorLink = onError(({ graphQLErrors, networkError }) => {
       )
     );
   if (networkError) console.log(`[Network error]: ${networkError}`);
-})
+});
 
 const client = new ApolloClient({
   // link: from([authLink, uploadLink]),
   link: from([authLink, errorLink, uploadLink]),
-  cache: new InMemoryCache({ addTypename: false }),
-})
+  cache: new InMemoryCache({
+    addTypename: false,
+    // typePolicies: {
+    //   Query: {
+    //     fields: {
+    //       posts: offsetLimitPagination(),
+    //     },
+    //   },
+    // },
+  }),
+});
 
-export default client
+export default client;

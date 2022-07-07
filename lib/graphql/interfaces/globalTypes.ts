@@ -27,6 +27,12 @@ export enum ProductOrderByFields {
   title = "title",
 }
 
+export enum PostOrderByFields {
+  title = "title",
+  publishedAt = "publishedAt",
+  categoryName = "categoryName",
+}
+
 export enum Role {
   admin = "admin",
   user = "user",
@@ -71,6 +77,13 @@ export interface FAQInput {
 export interface ProductFilter {
   take?: number | null;
   orderBy?: ProductOrderByFields | null;
+  order?: FilterOrder | null;
+  page?: number | null;
+}
+
+export interface PostFilter {
+  take?: number | null;
+  orderBy?: PostOrderByFields | null;
   order?: FilterOrder | null;
   page?: number | null;
 }

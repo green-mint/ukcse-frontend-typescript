@@ -20,6 +20,7 @@ export interface GetPost_post {
   content: string;
   tags: (string | null)[];
   publishedAt: string;
+  image: string;
   category: string;
   author: GetPost_post_author;
 }

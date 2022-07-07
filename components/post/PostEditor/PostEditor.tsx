@@ -1,10 +1,7 @@
 import React from "react";
-import GenericInput from "../../input/GenericInput/GenericInput";
 import { useForm, Controller } from "react-hook-form";
-import DropdownInput from "../../input/DropdownInput.jsx/DropdownInput";
-import TagsInput from "../../input/TagsInput/TagsInput";
-import QuillEditor from "../../input/QuillEditor/QuillEditor";
-import LoaderButton from "../../button/LoaderButton/LoaderButton";
+import { LoaderButton } from "../../buttons";
+import { DropdownInput, GenericInput, QuillEditor, TagsInput } from "../../inputs";
 
 type Props = {
   onSubmit: (data: any) => void;

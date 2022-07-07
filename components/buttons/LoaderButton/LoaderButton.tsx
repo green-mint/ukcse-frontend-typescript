@@ -1,5 +1,5 @@
 import React from "react";
-import Spinner from "./Spinner";
+import LoadingSpinner from "../../loaders/LoadingSpinner/LoadingSpinner";
 
 type Props = React.ButtonHTMLAttributes<HTMLButtonElement> & {
   label: string;
@@ -17,7 +17,7 @@ const LoaderButton = ({
   return (
     <button className={`rounded-md w-fit cursor-pointer hover:scale-110 disabled:cursor-not-allowed active:scale-90 transition-transform ease-in-out duration-200 flex ${className}`} {...extras}>
       {loading ? (
-          <Spinner />
+          <LoadingSpinner />
       ) : (
         <span className={`${loading ? "invisible" : "visible"} `}>{label}</span>
       )}
