@@ -20,6 +20,8 @@ const Products = (props: Props) => {
 
   const { isAuthenticated } = useAuth();
 
+  console.log(data?.products)
+
   return (
     <div className="px-5 pb-20">
       <h1 className="my-8 md:my-14 xl:my-20 text-3xl md:text-5xl xl:text-6xl text-center font-bold">
@@ -37,7 +39,7 @@ const Products = (props: Props) => {
                   href={`/products/${product.id}`}
                   price={isAuthenticated ? product.memberPrice : product.price}
                   title={product.title}
-                  thumbnail={`${process.env.NEXT_PUBLIC_SERVER_ENDPOINT}/${product.thumbnail}`}
+                  thumbnail={`${process.env.NEXT_PUBLIC_SERVER_ENDPOINT}/${product.thumbnail ? product.thumbnail : "public/images/unavailable.png"}`}
                 />
               )}
             </div>

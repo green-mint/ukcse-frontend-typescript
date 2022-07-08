@@ -19,6 +19,6 @@ export interface UpdatePosts {
 }
 
 export interface UpdatePostsVariables {
-  updatePostId: string;
+  updatePostId: string | string[] | undefined;
   input: UpdatePostInput;
 }

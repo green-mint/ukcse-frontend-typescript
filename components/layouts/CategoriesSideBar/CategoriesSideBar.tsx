@@ -77,7 +77,7 @@ function CategoriesList({ }) {
       <h3 className="text-xl font-bold text-white">Categories</h3>
       <div className="space-y-3 mx-auto hide-scollbar mt-6 w-fit h-11/12 overflow-y-scroll">
         {data?.categories.map((category, index) => (
-          <Link key={index} href={`/posts?category=${category}`}>
+          <Link key={index} href={`/posts?category=${category?.toLowerCase()}`}>
             <div className="w-full cursor-pointer text-black bg-white hover:text-white hover:bg-black border border-white font-bold mx-auto p-1 px-2 rounded-md ring-1 ring-gray-900">
               {category?.replace(/./, (c) => c.toUpperCase())}
             </div>

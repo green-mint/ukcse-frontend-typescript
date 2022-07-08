@@ -119,7 +119,8 @@ export const GET_POSTS_BY_CATEGORY = gql`
     postsInCategory(category: $category) {
       id
       title
-      content
+      publishedAt
+      category
       author {
         name
       }
@@ -150,8 +151,8 @@ export const GET_POST_WITH_CATEGORIES = gql`
       content
       tags
       publishedAt
-      category
       image
+      category
     }
     categories
   }

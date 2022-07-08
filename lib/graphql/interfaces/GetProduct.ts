@@ -21,9 +21,9 @@ export interface GetProduct_product {
   price: number;
   memberPrice: number;
   stock: number;
-  images: (string | null)[];
+  images: string[];
   videos: (string | null)[];
-  FAQs: (GetProduct_product_FAQs | null)[];
+  FAQs: GetProduct_product_FAQs[];
 }
 
 export interface GetProduct {

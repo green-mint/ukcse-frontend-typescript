@@ -12,7 +12,7 @@ const NextArrow = ({
   style,
 }: CustomArrowProps) => {
   return (
-    <div className="absolute top-1/3 -right-5 lg:-right-8 cursor-pointer" onClick={onClick}>
+    <div className="absolute top-1/3  -right-5 lg:-right-8 cursor-pointer" onClick={onClick}>
       <MdOutlineNavigateNext size={35} className="font-bold" />
     </div>
   );

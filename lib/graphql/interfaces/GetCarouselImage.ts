@@ -8,5 +8,5 @@
 // ====================================================
 
 export interface GetCarouselImage {
-  carouselImages: (string | null)[];
+  carouselImages: string[];
 }

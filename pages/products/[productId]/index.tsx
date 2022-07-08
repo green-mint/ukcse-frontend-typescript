@@ -6,7 +6,8 @@ import client from "../../../lib/graphql";
 import { GetProduct } from "../../../lib/graphql/interfaces/GetProduct";
 import { GetProducts } from "../../../lib/graphql/interfaces/GetProducts";
 import { GET_PRODUCT, GET_PRODUCTS } from "../../../lib/graphql/operations";
-
+// import slick css
+import "slick-carousel/slick/slick.css";
 type Props = {
   product: GetProduct["product"];
 };

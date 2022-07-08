@@ -4,10 +4,16 @@ import React from "react";
 import client from "../../../lib/graphql";
 import { GetPost } from "../../../lib/graphql/interfaces/GetPost";
 import { GetPosts } from "../../../lib/graphql/interfaces/GetPosts";
-import { GET_POST, GET_POSTS } from "../../../lib/graphql/operations";
+import { GET_POST, GET_POSTS, GET_POSTS_BY_CATEGORY } from "../../../lib/graphql/operations";
 import dynamic from "next/dynamic";
 import Head from "next/head";
 import { MainLayout } from "../../../components/layouts";
+import { PostsSlider } from "../../../components/post";
+import { useQuery } from "@apollo/client";
+import {
+  GetPostsByCategory,
+  GetPostsByCategoryVariables,
+} from "../../../lib/graphql/interfaces/GetPostsByCategory";
 const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
 
 type Props = {
@@ -15,7 +21,13 @@ type Props = {
 };
 
 const PostViewer = ({ post }: Props) => {
-  console.log(post);
+  const { loading, error, data } = useQuery<
+    GetPostsByCategory,
+    GetPostsByCategoryVariables
+  >(GET_POSTS_BY_CATEGORY, { variables: { category: post?.category || "none" } });
+
+  console.log(data);
+
   return (
     <>
       <Head>
@@ -31,9 +43,13 @@ const PostViewer = ({ post }: Props) => {
               {post?.category}
             </h3>
           </Link>
-          <h1 className="text-center text-xl sm:text-2xl md:text-3xl xl:text-4xl mt-1 xl:mt-2 font-bold">{post?.title}</h1>
+          <h1 className="text-center text-xl sm:text-2xl md:text-3xl xl:text-4xl mt-1 xl:mt-2 font-bold">
+            {post?.title}
+          </h1>
           <div className="flex mt-1 sm:mt-1.5 xl:mt-2.5 items-end space-x-2 justify-center">
-            <span className="text-xs text-slate-500 sm:text-sm">{post?.author.name}</span>
+            <span className="text-xs text-slate-500 sm:text-sm">
+              {post?.author.name}
+            </span>
             <div className="w-1 h-1 rounded-full bg-slate-300 my-auto"></div>
             <span className="text-xs sm:text-sm xl:text-base font text-slate-500">
               {post?.publishedAt &&
@@ -56,6 +72,19 @@ const PostViewer = ({ post }: Props) => {
             value={post?.content}
             readOnly
             modules={{ toolbar: false }}
+          />
+        </div>
+
+        <div className="mt-5">
+          <PostsSlider
+            data={data?.postsInCategory.map((post) => ({
+              title: post.title,
+              image: process.env.NEXT_PUBLIC_SERVER_ENDPOINT + "/" + post.image,
+              date: post.publishedAt,
+              author: post.author.name,
+              category: post.category,
+              id: post.id,
+            }))}
           />
         </div>
       </div>
@@ -104,11 +133,7 @@ export async function getStaticPaths() {
 }
 
 PostViewer.getLayout = (page: React.ReactElement) => {
-  return (
-    <MainLayout>
-      {page}
-    </MainLayout>
-  );
+  return <MainLayout>{page}</MainLayout>;
 };
 
 export default PostViewer;

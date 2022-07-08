@@ -1,10 +1,14 @@
-import { useQuery } from "@apollo/client";
+import { useRouter } from "next/router";
 import React from "react";
 import { CategoriesSideBar, MainLayout } from "../../components/layouts";
 import { PostsGrid } from "../../components/post";
 
 const Posts = () => {
-  return <PostsGrid />;
+
+  const router = useRouter();
+  const { category } = router.query;
+
+  return <PostsGrid category={category} />;
 };
 
 Posts.getLayout = (page: React.ReactElement) => {

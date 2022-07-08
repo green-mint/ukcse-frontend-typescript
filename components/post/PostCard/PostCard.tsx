@@ -21,7 +21,7 @@ const PostCard = ({ id, title, author, category, date, image }: PostCardProps) =
       </div>
 
       <div className="mt-3 cursor-pointer mb-1">
-        <Link href={`/posts?category=${category}`}>
+        <Link href={`/posts?category=${category.toLowerCase()}`}>
           <span className="text-xs text-emerald-600">{category.toUpperCase()}</span>
         </Link>
       </div>

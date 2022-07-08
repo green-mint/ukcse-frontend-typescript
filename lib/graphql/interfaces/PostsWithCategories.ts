@@ -12,7 +12,7 @@ export interface PostsWithCategories_post {
   id: string;
   title: string;
   content: string;
-  tags: (string | null)[];
+  tags: string[];
   publishedAt: string;
   category: string;
   image: string;
@@ -20,9 +20,9 @@ export interface PostsWithCategories_post {
 
 export interface PostsWithCategories {
   post: PostsWithCategories_post | null;
-  categories: (string | null)[];
+  categories: string[];
 }
 
 export interface PostsWithCategoriesVariables {
-  postId: string;
+  postId: string | undefined | string[];
 }

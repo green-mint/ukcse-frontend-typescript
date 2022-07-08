@@ -16,13 +16,14 @@ export interface GetPostsByCategory_postsInCategory {
   __typename: "Post";
   id: string;
   title: string;
-  content: string;
+  publishedAt: string;
+  category: string;
   author: GetPostsByCategory_postsInCategory_author;
   image: string;
 }
 
 export interface GetPostsByCategory {
-  postsInCategory: (GetPostsByCategory_postsInCategory | null)[];
+  postsInCategory: (GetPostsByCategory_postsInCategory)[];
 }
 
 export interface GetPostsByCategoryVariables {

@@ -7,14 +7,16 @@ type Props = React.InputHTMLAttributes<HTMLTextAreaElement> & {
   error?: FieldError;
 }
 
-const TextAreaInput = React.forwardRef<HTMLTextAreaElement, Props>(({ label, className, id, error, ...props }, ref) => {
+const TextAreaInput = React.forwardRef<HTMLTextAreaElement, Props>(({ label, className, id, error,name, ...props }, ref) => {
   return (
     <div className={className}>
       <label className='block font-semibold' htmlFor={`${id}`}>{label}:</label>
-      <textarea ref={ref} id={`${id}`} className="py-1.5 w-full px-2 rounded-md bg-slate-200" {...props} />
+      <textarea name={name} ref={ref} id={`${id}`} className="py-1.5 w-full px-2 rounded-md bg-slate-200" {...props} />
       {error && <p className="text-red-500 text-sm mt-1"> <BiErrorCircle className='mb-0.5 inline mr-1' color='red' />{error.message}</p>}
     </div>
   )
 })
+
+TextAreaInput.displayName = 'TextAreaInput'
 
 export default TextAreaInput;

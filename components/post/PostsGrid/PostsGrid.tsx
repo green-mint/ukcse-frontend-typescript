@@ -6,7 +6,7 @@ import { Grid } from "../../ui";
 import PostCard from "../PostCard/PostCard";
 
 
-const PostsGrid = () => {
+const PostsGrid = ({ category }: { category?: string | undefined | string[] }) => {
   const { loading, error, data, fetchMore } = useQuery<
     GetPosts,
     GetPostsVariables
@@ -20,7 +20,7 @@ const PostsGrid = () => {
       <div className="px-5 pb-20 ">
         <Grid
           isLoading={loading}
-          items={data?.posts}
+          items={data?.posts.filter(post => category ? post?.category === category : true)}
           loader={<PostLoader />}
           renderItem={(post, index) => {
             return (

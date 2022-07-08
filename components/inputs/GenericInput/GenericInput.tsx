@@ -7,14 +7,16 @@ type Props = React.InputHTMLAttributes<HTMLInputElement> & {
   error?: FieldError;
 }
 
-const GenericInput = React.forwardRef<HTMLInputElement, Props>(({ label, className, id, error, ...props }, ref) => {
+const GenericInput = React.forwardRef<HTMLInputElement, Props>(({ label, className, id, error, name, ...props }, ref) => {
   return (
     <div className={className}>
       <label className='block font-semibold' htmlFor={`${id}`}>{label}:</label>
-      <input ref={ref} id={`${id}`} className="py-1.5 w-full px-2 rounded-md bg-slate-200" {...props} />
+      <input name={name} ref={ref} id={`${id}`} className="py-1.5 w-full px-2 rounded-md bg-slate-200" {...props} />
       {error && <p className="text-red-500 text-sm mt-1"> <BiErrorCircle className='mb-0.5 inline mr-1' color='red' />{error.message}</p>}
     </div>
   )
 })
+
+GenericInput.displayName = 'GenericInput'
 
 export default GenericInput;

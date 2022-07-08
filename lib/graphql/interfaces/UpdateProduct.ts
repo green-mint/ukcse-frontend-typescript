@@ -19,6 +19,6 @@ export interface UpdateProduct {
 }
 
 export interface UpdateProductVariables {
-  updateProductId: string;
+  updateProductId: string | string[] | undefined;
   input: UpdateProductInput;
 }
