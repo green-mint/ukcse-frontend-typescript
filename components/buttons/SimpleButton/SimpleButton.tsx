@@ -2,7 +2,7 @@ import React from 'react'
 
 type Props = {
   label: string;
-  onClick: () => void;
+  onClick?: () => void;
   className?: string;
   disabled?: boolean;
 }

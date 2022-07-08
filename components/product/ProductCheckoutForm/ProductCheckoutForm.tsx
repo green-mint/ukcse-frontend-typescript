@@ -46,9 +46,11 @@ function ProductCheckoutForm({
       <div className="mt-5 font-bold">
         <span>Total Bill: $</span> <span>{quantity * price}</span>
       </div>
+      {stock}
       <div className="mt-5">
         <LoaderButton
           label="Checkout"
+          type="submit"
           className="px-3 py-2 bg-black text-slate-100"
           onClick={() =>
             createCheckout({
