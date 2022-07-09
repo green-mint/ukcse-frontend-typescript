@@ -46,7 +46,6 @@ function ProductCheckoutForm({
       <div className="mt-5 font-bold">
         <span>Total Bill: $</span> <span>{quantity * price}</span>
       </div>
-      {stock}
       <div className="mt-5">
         <LoaderButton
           label="Checkout"
