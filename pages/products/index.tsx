@@ -1,5 +1,5 @@
 import { useQuery } from "@apollo/client";
-import React from "react";
+import React, { useState } from "react";
 import { CategoriesSideBar, MainLayout } from "../../components/layouts";
 import { ProductLoader } from "../../components/loaders";
 import { ProductCard } from "../../components/product";
@@ -14,13 +14,28 @@ import { GET_PRODUCTS } from "../../lib/graphql/operations";
 type Props = {};
 
 const Products = (props: Props) => {
-  const { loading, data, error } = useQuery<GetProducts, GetProductsVariables>(
-    GET_PRODUCTS
+  const [pageNum, setPageNum] = useState(1);
+  
+  const { loading, data, error, fetchMore } = useQuery<GetProducts, GetProductsVariables>(
+    GET_PRODUCTS,
+    { variables: { filter: { take: 9, page: 0 } } }
   );
 
   const { isAuthenticated } = useAuth();
 
-  console.log(data?.products)
+  const loadMore = () => {
+    fetchMore({
+      variables: {
+        filter: {
+          take: 9,
+          page: pageNum + 1,
+        },
+      },
+    });
+    setPageNum(pageNum + 1);
+  }
+
+  if (error) return <p>Error :(</p>;
 
   return (
     <div className="px-5 pb-20">
@@ -32,14 +47,19 @@ const Products = (props: Props) => {
           isLoading={loading}
           loader={<ProductLoader />}
           items={data?.products}
-          renderItem={(product, index) => (
+          onEndReached={loadMore}
+          renderItem={(product) => (
             <div key={product?.id}>
               {product && (
                 <ProductCard
                   href={`/products/${product.id}`}
                   price={isAuthenticated ? product.memberPrice : product.price}
                   title={product.title}
-                  thumbnail={`${process.env.NEXT_PUBLIC_SERVER_ENDPOINT}/${product.thumbnail ? product.thumbnail : "public/images/unavailable.png"}`}
+                  thumbnail={`${process.env.NEXT_PUBLIC_SERVER_ENDPOINT}/${
+                    product.thumbnail
+                      ? product.thumbnail
+                      : "public/images/unavailable.png"
+                  }`}
                 />
               )}
             </div>

@@ -37,13 +37,46 @@ const client = new ApolloClient({
   link: from([authLink, errorLink, uploadLink]),
   cache: new InMemoryCache({
     addTypename: false,
-    // typePolicies: {
-    //   Query: {
-    //     fields: {
-    //       posts: offsetLimitPagination(),
-    //     },
-    //   },
-    // },
+    typePolicies: {
+      Query: {
+        fields: {
+          posts: {
+            keyArgs: false,
+            merge(existing, incoming, { args: { filter } }) {
+              const merged = existing ? [...existing] : [];
+              if (incoming) {
+                if (filter) {
+                  const { page = 0, take } = filter;
+                  for (let i = 0; i < incoming.length; ++i) {
+                    merged[take * page + i] = incoming[i];
+                  }
+                } else {
+                  merged.push.apply(merged, incoming);
+                }
+              }
+              return merged;
+            },
+          },
+          products: {
+            keyArgs: false,
+            merge(existing, incoming, { args: { filter } }) {
+              const merged = existing ? [...existing] : [];
+              if (incoming) {
+                if (filter) {
+                  const { page = 0, take } = filter;
+                  for (let i = 0; i < incoming.length; ++i) {
+                    merged[take * page + i] = incoming[i];
+                  }
+                } else {
+                  merged.push.apply(merged, incoming);
+                }
+              }
+              return merged;
+            },
+          },
+        },
+      },
+    },
   }),
 });
 
