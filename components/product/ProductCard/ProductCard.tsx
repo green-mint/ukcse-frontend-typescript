@@ -25,7 +25,7 @@ const ProductCard = ({ thumbnail, title, href, price }: Props) => {
       </div>
 
       <div>
-        <span className="text-sm font-bold text-slate-800">${price}</span>
+        <span className="text-sm font-bold text-slate-800">€{price}</span>
       </div>
     </div>
   );

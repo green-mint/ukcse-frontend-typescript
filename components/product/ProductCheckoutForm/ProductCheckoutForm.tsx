@@ -30,11 +30,8 @@ function ProductCheckoutForm({
     CreateCheckoutSessionVariables
   >(CREATE_CHECKOUT, { errorPolicy: "all" });
 
-  console.log(token);
-
   useEffect(() => {
     if (error) {
-      console.log(error);
       toast.error("Something went wrong");
     }
     if (data) router.push(data?.createCheckoutSession.redirectUrl);

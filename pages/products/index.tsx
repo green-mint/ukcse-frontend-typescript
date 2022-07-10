@@ -14,7 +14,7 @@ import { GET_PRODUCTS } from "../../lib/graphql/operations";
 type Props = {};
 
 const Products = (props: Props) => {
-  const [pageNum, setPageNum] = useState(1);
+  const [pageNum, setPageNum] = useState(0);
   
   const { loading, data, error, fetchMore } = useQuery<GetProducts, GetProductsVariables>(
     GET_PRODUCTS,

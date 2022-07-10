@@ -52,7 +52,6 @@ function PopularPostsEditor() {
   const { control, handleSubmit } = useForm<PopularPostsEditorForm>();
 
   const updatePopularPostsHandler = (values: PopularPostsEditorForm) => {
-    // console.log(first)
     updatePopularPosts({
       variables: {
         input: {
@@ -115,7 +114,6 @@ function CarouselImagesEditor() {
   const { control, handleSubmit } = useForm<CarouselImagesEditorForm>();
 
   const updateCarouselImagesHandler = (values: CarouselImagesEditorForm) => {
-    // console.log(first)
     updateCarouselImages({
       variables: {
         input: {

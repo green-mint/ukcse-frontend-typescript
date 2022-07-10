@@ -86,6 +86,7 @@ export interface PostFilter {
   orderBy?: PostOrderByFields | null;
   order?: FilterOrder | null;
   page?: number | null;
+  category?: string | null | string[];
 }
 
 export interface ProductInquiryInput {

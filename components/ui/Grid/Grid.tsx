@@ -29,7 +29,7 @@ const Grid = <T,>({
           </div>
         ))}
       {isLoading &&
-        [...Array(4)].map(() => loader)
+        [...Array(4)].map((index) => <div key={index}>{loader}</div>)
       } 
     </div>
   );

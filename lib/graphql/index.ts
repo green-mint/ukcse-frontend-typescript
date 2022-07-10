@@ -1,7 +1,6 @@
 import { ApolloClient, ApolloLink, from, InMemoryCache } from "@apollo/client";
 import { createUploadLink } from "apollo-upload-client";
 import { onError } from "@apollo/client/link/error";
-import { offsetLimitPagination } from "@apollo/client/utilities";
 
 const authLink = new ApolloLink((operation, forward) => {
   // retrive the token from local storage if local storage is available
@@ -42,11 +41,11 @@ const client = new ApolloClient({
         fields: {
           posts: {
             keyArgs: false,
-            merge(existing, incoming, { args: { filter } }) {
+            merge(existing, incoming, { args }) {
               const merged = existing ? [...existing] : [];
               if (incoming) {
-                if (filter) {
-                  const { page = 0, take } = filter;
+                if (args?.filter) {
+                  const { page = 0, take } = args.filter;
                   for (let i = 0; i < incoming.length; ++i) {
                     merged[take * page + i] = incoming[i];
                   }
@@ -59,11 +58,11 @@ const client = new ApolloClient({
           },
           products: {
             keyArgs: false,
-            merge(existing, incoming, { args: { filter } }) {
+            merge(existing, incoming, { args }) {
               const merged = existing ? [...existing] : [];
               if (incoming) {
-                if (filter) {
-                  const { page = 0, take } = filter;
+                if (args?.filter) {
+                  const { page = 0, take } = args.filter;
                   for (let i = 0; i < incoming.length; ++i) {
                     merged[take * page + i] = incoming[i];
                   }

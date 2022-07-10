@@ -32,8 +32,6 @@ const PostViewer = ({ post }: Props) => {
     variables: { category: post?.category || "none" },
   });
 
-  console.log(data);
-
   return (
     <>
       <Head>

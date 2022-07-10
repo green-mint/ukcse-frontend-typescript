@@ -5,7 +5,10 @@ import {
   GetPosts,
   GetPostsVariables,
 } from "../../../lib/graphql/interfaces/GetPosts";
-import { PostOrderByFields } from "../../../lib/graphql/interfaces/globalTypes";
+import {
+  FilterOrder,
+  PostOrderByFields,
+} from "../../../lib/graphql/interfaces/globalTypes";
 import { GET_POSTS } from "../../../lib/graphql/operations";
 import PostLoader from "../../loaders/PostLoader/PostLoader";
 import { Grid } from "../../ui";
@@ -23,7 +26,13 @@ const PostsGrid = ({
     GetPostsVariables
   >(GET_POSTS, {
     variables: {
-      filter: { take: 5, page: 0, orderBy: PostOrderByFields.publishedAt },
+      filter: {
+        take: 5,
+        page: 0,
+        orderBy: PostOrderByFields.publishedAt,
+        order: FilterOrder.desc,
+        category: category ? category : "all",
+      },
     },
   });
 
@@ -41,8 +50,6 @@ const PostsGrid = ({
   };
 
   if (error) return <p>Error :(</p>;
-
-  console.log(data?.posts.length);
 
   return (
     <div>
