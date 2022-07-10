@@ -8,12 +8,13 @@ import { GetProducts } from "../../../lib/graphql/interfaces/GetProducts";
 import { GET_PRODUCT, GET_PRODUCTS } from "../../../lib/graphql/operations";
 // import slick css
 import "slick-carousel/slick/slick.css";
+import { Membership } from "../../../lib/graphql/interfaces/globalTypes";
 type Props = {
   product: GetProduct["product"];
 };
 
 const ProductPage = ({ product }: Props) => {
-  const { isAuthenticated } = useAuth();
+  const { user } = useAuth();
 
   return product ? (
     <div className="">
@@ -34,7 +35,7 @@ const ProductPage = ({ product }: Props) => {
             <h3 className="text-lg md:text-2xl font-semibold">
               Price:{" "}
               <span className="text-sm font-normal md:text-lg">
-              £{isAuthenticated ? product.memberPrice : product.price}
+              £{user?.membership !== Membership.none  ? product.memberPrice : product.price}
               </span>
             </h3>
           </div>
@@ -65,7 +66,7 @@ const ProductPage = ({ product }: Props) => {
       <div className="fixed w-screen bottom-0 lg:w-64 lg:top-0 lg:right-0 bg-black   z-10">
         <ProductSideBar
           productId={product.id}
-          price={isAuthenticated ? product.memberPrice : product.price}
+          price={user?.membership !== Membership.none ? product.memberPrice : product.price}
           stock={product.stock}
         />
       </div>

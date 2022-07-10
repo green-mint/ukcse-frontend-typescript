@@ -9,6 +9,7 @@ import {
   GetProducts,
   GetProductsVariables,
 } from "../../lib/graphql/interfaces/GetProducts";
+import { Membership } from "../../lib/graphql/interfaces/globalTypes";
 import { GET_PRODUCTS } from "../../lib/graphql/operations";
 
 type Props = {};
@@ -21,7 +22,7 @@ const Products = (props: Props) => {
     { variables: { filter: { take: 9, page: 0 } } }
   );
 
-  const { isAuthenticated } = useAuth();
+  const { user } = useAuth();
 
   const loadMore = () => {
     fetchMore({
@@ -53,7 +54,7 @@ const Products = (props: Props) => {
               {product && (
                 <ProductCard
                   href={`/products/${product.id}`}
-                  price={isAuthenticated ? product.memberPrice : product.price}
+                  price={user?.membership !== Membership.none ? product.memberPrice : product.price}
                   title={product.title}
                   thumbnail={`${process.env.NEXT_PUBLIC_SERVER_ENDPOINT}/${
                     product.thumbnail
