@@ -1,6 +1,6 @@
 import { useQuery } from "@apollo/client";
 import React from "react";
-import { MainLayout } from "../../components/layouts";
+import { CategoriesSideBar, MainLayout } from "../../components/layouts";
 import { ProductLoader } from "../../components/loaders";
 import { ProductCard } from "../../components/product";
 import { Grid } from "../../components/ui";
@@ -51,7 +51,12 @@ const Products = (props: Props) => {
 };
 
 Products.getLayout = (page: React.ReactElement) => {
-  return <MainLayout>{page}</MainLayout>;
+  return (
+    <MainLayout>
+      <CategoriesSideBar />
+      <div className="lg:ml-64 relative">{page}</div>
+    </MainLayout>
+  );
 };
 
 export default Products;

@@ -32,6 +32,7 @@ function Carousel() {
       ) : (
         data && (
           <ImageSlider
+            autoPlay={true}
             images={data.carouselImages.map(
               (image) => process.env.NEXT_PUBLIC_SERVER_ENDPOINT + "/" + image
             )}

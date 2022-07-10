@@ -6,9 +6,10 @@ import PrevArrow from "./PrevArrow";
 
 type Props = {
   images: (string | null)[];
+  autoPlay?: boolean;
 };
 
-const ImageSlider = ({ images }: Props) => {
+const ImageSlider = ({ images, autoPlay=false }: Props) => {
   console.log(images);
   return (
     <>
@@ -16,6 +17,7 @@ const ImageSlider = ({ images }: Props) => {
         <Slider
           nextArrow={<NextArrow />}
           prevArrow={<PrevArrow />}
+          autoplay={autoPlay}
           slidesToScroll={1}
           slidesToShow={1}
           infinite={true}

@@ -1,5 +1,5 @@
 import React from "react";
-import { MainLayout, ProductSideBar } from "../../../components/layouts";
+import { CategoriesSideBar, MainLayout, ProductSideBar } from "../../../components/layouts";
 import { Accordion, ImageSlider } from "../../../components/ui";
 import useAuth from "../../../lib/auth/useAuth";
 import client from "../../../lib/graphql";
@@ -110,7 +110,12 @@ export async function getStaticPaths() {
 }
 
 ProductPage.getLayout = (page: React.ReactElement) => {
-  return <MainLayout>{page}</MainLayout>;
+  return (
+    <MainLayout>
+      <CategoriesSideBar />
+      <div className="lg:ml-64 relative">{page}</div>
+    </MainLayout>
+  );
 };
 
 export default ProductPage;

@@ -20,7 +20,7 @@ const PostsGrid = ({ category }: { category?: string | undefined | string[] }) =
       <div className="px-5 pb-20 ">
         <Grid
           isLoading={loading}
-          items={data?.posts.filter(post => category ? post?.category === category : true)}
+          items={data?.posts.filter(post => category ? post?.category.toLowerCase() === category : true)}
           loader={<PostLoader />}
           renderItem={(post, index) => {
             return (

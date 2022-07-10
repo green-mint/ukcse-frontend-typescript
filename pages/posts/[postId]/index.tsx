@@ -4,10 +4,14 @@ import React from "react";
 import client from "../../../lib/graphql";
 import { GetPost } from "../../../lib/graphql/interfaces/GetPost";
 import { GetPosts } from "../../../lib/graphql/interfaces/GetPosts";
-import { GET_POST, GET_POSTS, GET_POSTS_BY_CATEGORY } from "../../../lib/graphql/operations";
+import {
+  GET_POST,
+  GET_POSTS,
+  GET_POSTS_BY_CATEGORY,
+} from "../../../lib/graphql/operations";
 import dynamic from "next/dynamic";
 import Head from "next/head";
-import { MainLayout } from "../../../components/layouts";
+import { CategoriesSideBar, MainLayout } from "../../../components/layouts";
 import { PostsSlider } from "../../../components/post";
 import { useQuery } from "@apollo/client";
 import {
@@ -24,7 +28,9 @@ const PostViewer = ({ post }: Props) => {
   const { loading, error, data } = useQuery<
     GetPostsByCategory,
     GetPostsByCategoryVariables
-  >(GET_POSTS_BY_CATEGORY, { variables: { category: post?.category || "none" } });
+  >(GET_POSTS_BY_CATEGORY, {
+    variables: { category: post?.category || "none" },
+  });
 
   console.log(data);
 
@@ -121,7 +127,6 @@ export async function getStaticPaths() {
   });
 
   if (error) throw new Error("Error getting posts" + error.message);
-  console.log(data);
   return {
     paths: data.posts.map((post) => ({
       params: {
@@ -133,7 +138,12 @@ export async function getStaticPaths() {
 }
 
 PostViewer.getLayout = (page: React.ReactElement) => {
-  return <MainLayout>{page}</MainLayout>;
+  return (
+    <MainLayout>
+      <CategoriesSideBar />
+      <div className="lg:ml-64 relative">{page}</div>
+    </MainLayout>
+  );
 };
 
 export default PostViewer;

@@ -2,6 +2,7 @@ import { useRouter } from "next/router";
 import React from "react";
 import Link from "next/link";
 import { SimpleButton } from "../../../components/buttons";
+import { CategoriesSideBar, MainLayout } from "../../../components/layouts";
 
 function Failure() {
   const router = useRouter();
@@ -16,5 +17,15 @@ function Failure() {
     </div>
   );
 }
+
+Failure.getLayout = (page: React.ReactElement) => {
+  return (
+    <MainLayout>
+      <CategoriesSideBar />
+      <div className="lg:ml-64 relative">{page}</div>
+    </MainLayout>
+  );
+};
+
 
 export default Failure;

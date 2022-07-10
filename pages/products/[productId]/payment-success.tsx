@@ -2,6 +2,7 @@ import { useRouter } from "next/router";
 import React from "react";
 import Link from "next/link";
 import { SimpleButton } from "../../../components/buttons";
+import { CategoriesSideBar, MainLayout } from "../../../components/layouts";
 
 function Success() {
   const router = useRouter();
@@ -16,5 +17,14 @@ function Success() {
     </div>
   );
 }
+
+Success.getLayout = (page: React.ReactElement) => {
+  return (
+    <MainLayout>
+      <CategoriesSideBar />
+      <div className="lg:ml-64 relative">{page}</div>
+    </MainLayout>
+  );
+};
 
 export default Success;
