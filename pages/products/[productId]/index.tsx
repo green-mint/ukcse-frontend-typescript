@@ -34,7 +34,7 @@ const ProductPage = ({ product }: Props) => {
             <h3 className="text-lg md:text-2xl font-semibold">
               Price:{" "}
               <span className="text-sm font-normal md:text-lg">
-                ${isAuthenticated ? product.memberPrice : product.price}
+              £{isAuthenticated ? product.memberPrice : product.price}
               </span>
             </h3>
           </div>
