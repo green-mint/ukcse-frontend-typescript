@@ -5,27 +5,28 @@ import Hamburger from "./Hamburger";
 import Link from "next/link";
 import useAuth from "../../../lib/auth/useAuth";
 
-export type Props = {
+const headerItems = [
+  {
+    name: "Home",
+    href: "/",
+    hidden: false,
+  },
+  {
+    name: "Posts",
+    href: "/posts",
+    hidden: false,
+  },
+  {
+    name: "Products",
+    href: "/products",
+    hidden: false,
+  },
+];
+export type Props = {};
 
-}
-
-const Header = ({}:Props) => {
+const Header = ({}: Props) => {
   const [navOpen, setNavOpen] = useState(false);
   const { isAuthenticated, user, signin, signout } = useAuth();
-  const headerItems = [
-    {
-      name: "Home",
-      href: "/",
-    },
-    {
-      name: "Posts",
-      href: "/posts",
-    },
-    {
-      name: "Products",
-      href: "/products",
-    },
-  ];
 
   useEffect(() => {
     if (navOpen) {
@@ -47,11 +48,14 @@ const Header = ({}:Props) => {
         </div>
 
         <div className="hidden md:flex space-x-5">
-          {headerItems.map((item, index) => (
-            <HeaderItem key={index} href={item.href}>
-              {item.name}
-            </HeaderItem>
-          ))}
+          {headerItems.map(
+            (item, index) =>
+              !item.hidden && (
+                <HeaderItem key={index} href={item.href}>
+                  {item.name}
+                </HeaderItem>
+              )
+          )}
           {user?.role === "admin" && (
             <HeaderItem href="/admin">Admin</HeaderItem>
           )}
@@ -104,6 +108,6 @@ const Header = ({}:Props) => {
       </div>
     </nav>
   );
-}
+};
 
 export default Header;
